@@ -1,6 +1,7 @@
 const http = require("http");
 const app = require("express")();
 app.get("/", (req,res)=> res.sendFile(__dirname + "/index.html"))
+
 app.listen(9091, ()=>console.log("Listening on http port 9091"))
 const websocketServer = require("websocket").server
 const httpServer = http.createServer();
@@ -19,6 +20,8 @@ wsServer.on("request", request => {
     connection.on("close", () => console.log("closed!"))
     connection.on("message", message => {
         const result = JSON.parse(message.utf8Data)
+        //I have received a message from the client
+        //a user want to create a new game
         if (result.method === "create") {
             const clientId = result.clientId;
             const gameId = guid();
@@ -91,9 +94,12 @@ wsServer.on("request", request => {
         "method": "connect",
         "clientId": clientId
     }
+    //send back the client connect
     connection.send(JSON.stringify(payLoad))
 
 })
+
+
 function updateGameState(){
 
     //{"gameid", fasdfsf}
@@ -111,6 +117,8 @@ function updateGameState(){
 
     setTimeout(updateGameState, 500);
 }
+
+
 
 function S4() {
     return (((1+Math.random())*0x10000)|0).toString(16).substring(1); 
