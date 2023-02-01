@@ -1,0 +1,25 @@
+.newGame{
+    background: url(resources/signupLogin.jpg);
+    background-size:cover;
+    min-height: 100%;
+    justify-items: center;
+}
+
+.newGame h1{
+    font-size: 50px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 150px;
+    margin-bottom: 50px;
+    color: #ff7b00;
+    text-shadow: 2px 2px 3px rgb(162, 162, 162);
+}
+
+
+.btn-create{
+    background-color: #ff7b00;
+    color: white;
+}
+
